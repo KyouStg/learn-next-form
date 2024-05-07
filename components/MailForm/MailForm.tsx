@@ -67,6 +67,27 @@ export default function MailForm() {
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name="file"
+          render={({field: { value, onChange, ...fieldProps} }) => (
+            <FormItem>
+              <FormLabel>添付画像</FormLabel>
+              <FormControl>
+                <Input
+                  accept="image/*"
+                  type="file"
+                  placeholder="ファイル"
+                  onChange={(event) => {
+                    onChange(event.target.files);
+                  }}
+                  {...fieldProps}
+                />
+              </FormControl>
+              <FormMessage/>
+            </FormItem>
+          )}
+        />
         <Button type="submit">Submit</Button>
       </form>
     </Form>
