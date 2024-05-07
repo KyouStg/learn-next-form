@@ -1,16 +1,24 @@
 "use client";
-import React from "react";
+import React, {useEffect} from "react";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import {Textarea} from "@/components/ui/textarea";
 import {useMailForm} from "@/hooks/useMailForm";
+import {ClipLoader} from "react-spinners";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function MailForm() {
   const {form, onSubmit} = useMailForm();
 
+  useEffect(() => {
+    if(form.formState.isSubmitSuccessful) toast.success("メール送信に成功しました");
+  },[form.formState.isSubmitSuccessful])
+
   return (
     <Form {...form}>
+      <ToastContainer />
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="container flex flex-col gap-3"
@@ -88,7 +96,9 @@ export default function MailForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" disabled={form.formState.isSubmitting}>
+          {form.formState.isSubmitting ? <ClipLoader /> : "送信"}
+        </Button>
       </form>
     </Form>
   )
