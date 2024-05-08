@@ -1,10 +1,10 @@
 "use client";
 import React, {useEffect} from "react";
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
-import {Input} from "@/components/ui/input";
-import {Button} from "@/components/ui/button";
-import {Textarea} from "@/components/ui/textarea";
-import {useMailForm} from "@/hooks/useMailForm";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "../ui/form";
+import {Input} from "../ui/input";
+import {Button} from "../ui/button";
+import {Textarea} from "../ui/textarea";
+import {useMailForm} from "../../hooks/useMailForm";
 import {ClipLoader} from "react-spinners";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
